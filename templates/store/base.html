@@ -1,0 +1,81 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>{% block title %}My shop{% endblock %}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  
+</head>
+
+<body>
+{% comment %} <body class="h-100 text-center text-white bg-dark"> {% endcomment %}
+
+  <header>
+
+    <nav class="navbar-expand-lg navbar-light fixed-top bg-secondary">
+    
+
+    <div class="container border-bottom">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+          <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"/></svg>
+        </a>
+
+      <a class="navbar-brand" style="color: black" href="#">BookStore</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+          aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+        
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <li nav-item><a href="/" class="nav-link px-2 text-dark">Home</a></li>
+          <li nav-item><a href="#" class="nav-link px-2 text-dark">Link</a></li>
+          <li nav-item dropdown>
+            <a href="#" class="nav-link dropdown-toggle px-2 text-dark" id="navbarDropdown" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">Library</a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a href="{% url "store:all_products" %}" class="dropdown-item nav-link px-2 text-dark">All</a></li>
+            {% for c in categories %}
+            <li {% if category.slug == c.slug %}class="selected" {% endif %}>
+              <a href="{{ c.get_absolute_url }}" class="dropdown-item nav-link px-2 text-secondary">{{ c.name|title }}</a>
+            </li>
+            {% endfor %}
+            </ul>
+          </li>
+        </ul>
+
+        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+          <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">
+        </form>
+      </div>
+    </div></nav>
+    
+  </header>
+
+  <div id="content">{% block content %} {% endblock %}</div>
+
+  <footer class="text-muted py-5 bg-secondary sticky-bottom">
+    <div class="container">
+      <p class="float-end mb-1">
+        <a href="#">Back to top</a>
+      </p>
+      <p class="mb-0 text-dark"><a href="https://www.linkedin.com/in/ayomide-adeyemi-69bb7915b/" target="_blank" class="mb-0 text-dark" style="text-decoration: none;">The-Aydev </a>&copy
+        <script type="text/JavaScript">
+          document.write(new Date().getFullYear());
+        </script>
+        All Rights Reserved.
+      </p>
+    </div>
+  </footer>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+
+</body>
+
+</html>
