@@ -42,7 +42,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'store.views.categories',
+                'store.context_processors.categories',
             ],
         },
     },
@@ -73,7 +73,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 LANGUAGE_CODE = 'en-us'
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/London'
 USE_I18N = True
 USE_TZ = True
 
